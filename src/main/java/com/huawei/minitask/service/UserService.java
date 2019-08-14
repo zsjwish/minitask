@@ -11,4 +11,5 @@ import java.util.List;
 public interface UserService {
     User getUserById(int id);
     List<User> getUsersByName(String name);
+    List<User> getAllUser();
 }

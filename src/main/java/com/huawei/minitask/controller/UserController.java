@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * created by zsj in 23:57 2019/8/12
@@ -18,10 +19,14 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class UserController {
     @Autowired
-    UserSericeImpl userSerice;
+    private UserSericeImpl userSerice;
 
-    @RequestMapping(value = "getUserById", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUserById/{id}", method = RequestMethod.GET)
     public User getUserById(HttpServletRequest request, @PathVariable("id") int id) {
         return userSerice.getUserById(id);
+    }
+    @RequestMapping(value = "/queryAllUser", method = RequestMethod.GET)
+    public List<User> getAllUser(HttpServletRequest request) {
+        return userSerice.getAllUser();
     }
 }

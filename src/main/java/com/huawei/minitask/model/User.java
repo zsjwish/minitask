@@ -11,17 +11,11 @@ import javax.persistence.Table;
  * description:
  **/
 @Data
-@Table(name = "user")
 public class User {
 
-    @Id
-    @Column(name = "id")
     private int id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "password")
     private String password;
-    @Column(name = "salt")
     private String salt;
 
     public User() {

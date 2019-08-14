@@ -1,5 +1,6 @@
 package com.huawei.minitask.service.impl;
 
+
 import com.huawei.minitask.dao.UserDao;
 import com.huawei.minitask.model.User;
 import com.huawei.minitask.service.UserService;
@@ -16,7 +17,8 @@ import java.util.List;
 public class UserSericeImpl implements UserService {
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
+
     @Override
     public User getUserById(int id) {
         return userDao.queryUserById(id);
@@ -25,5 +27,10 @@ public class UserSericeImpl implements UserService {
     @Override
     public List<User> getUsersByName(String name) {
         return userDao.queryUsersByName(name);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return userDao.queryAllUser();
     }
 }

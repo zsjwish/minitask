@@ -2,10 +2,10 @@ package com.huawei.minitask.dao;
 
 import com.huawei.minitask.model.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.jpa.repository.Query;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.data.repository.CrudRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -13,10 +13,13 @@ import java.util.List;
  * description:
  **/
 @Mapper
-@Transactional
-public interface UserDao extends CrudRepository<User, Long>{
-    User queryUserById(int id);
-    List<User> queryUsersByName(String name);
+public interface UserDao{
 
+    @Select("select * from user where id = #{id}")
+    User queryUserById(@Param("id") int id);
+    @Select("select * from user where name = #{name}")
+    List<User> queryUsersByName(@Param("name") String name);
+    @Select("select * from user")
+    List<User> queryAllUser();
 //    boolean addUser(User user);
 }
